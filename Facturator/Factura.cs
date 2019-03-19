@@ -24,6 +24,15 @@ namespace Facturator {
             this.total = total;
         }
 
+        public void LlenarProductos() {
+            canasta = new Producto[5];
+
+            canasta[0] = new Producto("Leche", 5, 2500);
+            canasta[1] = new Producto("Jamon", 1, 4500);
+            canasta[2] = new Producto("Pan", 2, 6000);
+            canasta[3] = new Producto("Queso", 1, 5200);
+            canasta[4] = new Producto("Huevo", 12, 100);
+        }
         
         public string Fecha { get => fecha; set => fecha = value; }
         public int Estado_actual { get => estado_actual; set => estado_actual = value; }

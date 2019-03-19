@@ -10,24 +10,24 @@ namespace Facturator {
         private int tamano;
         private float precio;
         private float peso;
+        private int cantidad;
 
         public string Nombre { get => nombre; set => nombre = value; }
         public int Tamano { get => tamano; set => tamano = value; }
         public float Precio { get => precio; set => precio = value; }
         public float Peso { get => peso; set => peso = value; }
-        
+        public int Cantidad { get => cantidad; set => cantidad = value; }
 
         public Producto() 
         {
 
         }
 
-        public Producto(string nombre, int tamano, float precio, float peso) 
+        public Producto(string nombre, int cantidad, float precio) 
         {
             this.nombre = nombre;
-            this.tamano = tamano;
+            this.cantidad = cantidad;
             this.precio = precio;
-            this.peso = peso;
         
 
         }
