@@ -7,5 +7,7 @@ using System.Threading.Tasks;
 namespace Facturator {
     class Factura {
         private string fecha;
+        private int estado_actual;
+        private string medio_pago;
     }
 }
