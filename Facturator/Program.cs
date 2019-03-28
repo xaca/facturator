@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 namespace Facturator {
     class Program {
         static void Main(string[] args) {
-            
+
+            LectorArchivo temp = new LectorArchivo();
+            temp.LeerArchivoCompleto();
+
         }
     }
 }

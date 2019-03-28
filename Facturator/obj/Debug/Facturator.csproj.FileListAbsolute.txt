@@ -1,0 +1,7 @@
+E:\desarrollo\2019-01\facturator\Facturator\bin\Debug\Facturator.exe.config
+E:\desarrollo\2019-01\facturator\Facturator\bin\Debug\Facturator.exe
+E:\desarrollo\2019-01\facturator\Facturator\bin\Debug\Facturator.pdb
+E:\desarrollo\2019-01\facturator\Facturator\obj\Debug\Facturator.csprojAssemblyReference.cache
+E:\desarrollo\2019-01\facturator\Facturator\obj\Debug\Facturator.csproj.CoreCompileInputs.cache
+E:\desarrollo\2019-01\facturator\Facturator\obj\Debug\Facturator.exe
+E:\desarrollo\2019-01\facturator\Facturator\obj\Debug\Facturator.pdb
