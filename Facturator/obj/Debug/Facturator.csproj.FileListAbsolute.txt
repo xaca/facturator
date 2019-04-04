@@ -5,3 +5,10 @@ E:\desarrollo\2019-01\facturator\Facturator\obj\Debug\Facturator.csprojAssemblyR
 E:\desarrollo\2019-01\facturator\Facturator\obj\Debug\Facturator.csproj.CoreCompileInputs.cache
 E:\desarrollo\2019-01\facturator\Facturator\obj\Debug\Facturator.exe
 E:\desarrollo\2019-01\facturator\Facturator\obj\Debug\Facturator.pdb
+C:\Users\B09S211est\Documents\facturator\Facturator\bin\Debug\Facturator.exe.config
+C:\Users\B09S211est\Documents\facturator\Facturator\bin\Debug\Facturator.exe
+C:\Users\B09S211est\Documents\facturator\Facturator\bin\Debug\Facturator.pdb
+C:\Users\B09S211est\Documents\facturator\Facturator\obj\Debug\Facturator.csprojAssemblyReference.cache
+C:\Users\B09S211est\Documents\facturator\Facturator\obj\Debug\Facturator.csproj.CoreCompileInputs.cache
+C:\Users\B09S211est\Documents\facturator\Facturator\obj\Debug\Facturator.exe
+C:\Users\B09S211est\Documents\facturator\Facturator\obj\Debug\Facturator.pdb

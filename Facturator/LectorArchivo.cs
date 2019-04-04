@@ -31,13 +31,23 @@ namespace Facturator {
             }
             Console.ReadKey();
         }
-
+                
         public void ProcesarNombres(string nombres) {
+            char[] charSeparators = new char[] { '-' };
+            string[] temp = nombres.Split(charSeparators);
 
+            foreach (string author in temp) {
+                Console.WriteLine(author);
+            }
         }
 
         public void ProcesarPrecios(string precios) {
+            char[] charSeparators = new char[] { '#' };
+            string[] temp = precios.Split(charSeparators);
 
+            foreach (string producto in temp) {
+                Console.WriteLine(producto);
+            }
         }
 
     }
