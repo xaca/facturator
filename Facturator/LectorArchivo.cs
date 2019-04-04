@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 namespace Facturator {
     class LectorArchivo {
 
+        public const char SEPARADOR_NOMBRES = '-';
+        public const char SEPARADOR_PRECIOS = '#';
+        public const char SEPARADOR_REGISTROS = ',';
+
         /*
             En este primer ejemplo, vamos a leer todas las lineas de un archivo, para empezar a revisar el tema de lectura de datos externos,
             sin embargo aclaro que este enfoque no es el más recomendable, sobretodo para archivos que pueden ser grandes, más adelante usaremos
@@ -28,25 +32,29 @@ namespace Facturator {
             {
                 // Use a tab to indent each line of the file.
                 Console.WriteLine("\t" + line);
+                
             }
             Console.ReadKey();
         }
-                
-        public void ProcesarNombres(string nombres) {
-            char[] charSeparators = new char[] { '-' };
-            string[] temp = nombres.Split(charSeparators);
+        
+        public void ProcesarLinea(string linea) {
+            char[] separador_linea = new char[] { SEPARADOR_REGISTROS };
+            string[] temp = linea.Split(separador_linea);
 
-            foreach (string author in temp) {
-                Console.WriteLine(author);
-            }
+            //temp[0] Fecha
+            ProcesarRegistro(temp[1], SEPARADOR_NOMBRES);
+            ProcesarRegistro(temp[2], SEPARADOR_PRECIOS);
+            //temp[3] Medio de pago
+            //temp[4] Estado actual
+
         }
+        
+        public void ProcesarRegistro(string registro,char separador) {
+            char[] separador_registro = new char[] { separador };
+            string[] temp = registro.Split(separador_registro);
 
-        public void ProcesarPrecios(string precios) {
-            char[] charSeparators = new char[] { '#' };
-            string[] temp = precios.Split(charSeparators);
-
-            foreach (string producto in temp) {
-                Console.WriteLine(producto);
+            foreach (string item in temp) {
+                Console.WriteLine(item);
             }
         }
 

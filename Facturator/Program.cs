@@ -8,9 +8,10 @@ namespace Facturator {
     class Program {
         static void Main(string[] args) {
 
-            LectorArchivo temp = new LectorArchivo();
-            temp.LeerArchivoCompleto();
-
+            /*LectorArchivo temp = new LectorArchivo();
+            temp.LeerArchivoCompleto();*/
+            Console.WriteLine(LectorArchivo.SEPARADOR_NOMBRES);
+                        
         }
     }
 }
