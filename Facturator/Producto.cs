@@ -23,13 +23,17 @@ namespace Facturator {
 
         }
 
+        public Producto(string nombre, float precio)
+        {
+            this.nombre = nombre;
+            this.precio = precio;
+        }
+
         public Producto(string nombre, int cantidad, float precio) 
         {
             this.nombre = nombre;
             this.cantidad = cantidad;
             this.precio = precio;
-        
-
         }
     }
 }

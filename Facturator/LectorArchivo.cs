@@ -11,6 +11,8 @@ namespace Facturator {
         public const char SEPARADOR_PRECIOS = '#';
         public const char SEPARADOR_REGISTROS = ',';
 
+        private Factura[] facturas;//Pendiente hacer refactoring, la clase LectorArchivo solo debe leer el archivo y retornarlo
+
         /*
             En este primer ejemplo, vamos a leer todas las lineas de un archivo, para empezar a revisar el tema de lectura de datos externos,
             sin embargo aclaro que este enfoque no es el más recomendable, sobretodo para archivos que pueden ser grandes, más adelante usaremos
@@ -40,22 +42,32 @@ namespace Facturator {
         public void ProcesarLinea(string linea) {
             char[] separador_linea = new char[] { SEPARADOR_REGISTROS };
             string[] temp = linea.Split(separador_linea);
+            string[] nombres, precios;
 
-            //temp[0] Fecha
-            ProcesarRegistro(temp[1], SEPARADOR_NOMBRES);
-            ProcesarRegistro(temp[2], SEPARADOR_PRECIOS);
-            //temp[3] Medio de pago
-            //temp[4] Estado actual
+            facturas = new Factura[temp.Length];
+
+            for (int i = 0; i < facturas.Length; i++)
+            {
+                //temp[0] Fecha
+                nombres = ProcesarRegistro(temp[1], SEPARADOR_NOMBRES);
+                precios = ProcesarRegistro(temp[2], SEPARADOR_PRECIOS);
+                facturas[i].AgregarProductos(nombres,precios);
+                //temp[3] Medio de pago
+                //temp[4] Estado actual
+            }
 
         }
         
-        public void ProcesarRegistro(string registro,char separador) {
+        public string[] ProcesarRegistro(string registro,char separador) {
             char[] separador_registro = new char[] { separador };
             string[] temp = registro.Split(separador_registro);
+            string[] salida = new string[temp.Length];
 
-            foreach (string item in temp) {
-                Console.WriteLine(item);
+            for(int i=0;i<temp.Length;i++) {
+                salida[i] = temp[i];
             }
+
+            return salida;
         }
 
     }
