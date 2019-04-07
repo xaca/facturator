@@ -10,6 +10,7 @@ namespace Facturator {
         public const char SEPARADOR_NOMBRES = '-';
         public const char SEPARADOR_PRECIOS = '#';
         public const char SEPARADOR_REGISTROS = ',';
+        public const char SEPARADOR_CANTIDAD = 'C';
 
         private Factura[] facturas;//Pendiente hacer refactoring, la clase LectorArchivo solo debe leer el archivo y retornarlo
 
@@ -23,25 +24,32 @@ namespace Facturator {
 
         public void LeerArchivoCompleto()
         {
-            // Example #2
-            // Read each line of the file into a string array. Each element
-            // of the array is one line of the file.
-            string[] lines = System.IO.File.ReadAllLines(@"../../archivo/facturas.csv");
 
-            // Display the file contents by using a foreach loop.
-            Console.WriteLine("Contenido del archivo facturas = ");
-            foreach (string line in lines)
+            try
             {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\t" + line);
-                
+                // Example #2
+                // Read each line of the file into a string array. Each element
+                // of the array is one line of the file.
+                string[] lines = System.IO.File.ReadAllLines(@"../../archivo/facturas.csv");
+
+                // Display the file contents by using a foreach loop.
+                Console.WriteLine("Contenido del archivo facturas = ");
+                foreach (string line in lines)
+                {
+                    // Use a tab to indent each line of the file.
+                    ProcesarLinea(line);
+                }
             }
-            Console.ReadKey();
+            catch(Exception e)
+            {
+                //Pendiente personalizar la excepcion
+                Console.WriteLine("Error al leer el archivo, revise que el archivo este cerrado");
+            }
         }
         
         public void ProcesarLinea(string linea) {
-            char[] separador_linea = new char[] { SEPARADOR_REGISTROS };
-            string[] temp = linea.Split(separador_linea);
+
+            string[] temp = Utilitario.SepararCadena(linea,SEPARADOR_REGISTROS);
             string[] nombres, precios;
 
             facturas = new Factura[temp.Length];
@@ -59,8 +67,8 @@ namespace Facturator {
         }
         
         public string[] ProcesarRegistro(string registro,char separador) {
-            char[] separador_registro = new char[] { separador };
-            string[] temp = registro.Split(separador_registro);
+            
+            string[] temp = Utilitario.SepararCadena(registro, separador);
             string[] salida = new string[temp.Length];
 
             for(int i=0;i<temp.Length;i++) {

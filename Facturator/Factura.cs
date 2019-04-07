@@ -39,22 +39,26 @@ namespace Facturator {
             }
         }
 
-        public void AgregarProducto(string nombre,float precio)
+        public void AgregarProducto(string nombre,float precio, int cantidad)
         {
-            AgregarProducto(new Producto(nombre, precio));
+            AgregarProducto(new Producto(nombre, precio, cantidad));
         }
 
         public void AgregarProductos(string[] nombres,string[] precios)
         {
             float precio;
+            int cantidad;
+            string[] precio_cantidad;
 
             for (int i = 0; i < nombres.Length; i++)
             {
-                precio = Utilitario.ConvertirFlotante(precios[i]);
-
-                if(precio >= 0)
+                precio_cantidad = Utilitario.SepararCadena(precios[i], LectorArchivo.SEPARADOR_CANTIDAD);
+                precio = Utilitario.ConvertirFlotante(precio_cantidad[0]);
+                cantidad = Utilitario.ConvertirEntero(precio_cantidad[1]);
+                
+                if(precio > 0 && cantidad>0)
                 {
-                    AgregarProducto(nombres[i], precio);
+                    AgregarProducto(nombres[i], precio, cantidad);
                 }
                 else
                 {

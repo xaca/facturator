@@ -29,7 +29,7 @@ namespace Facturator {
             this.precio = precio;
         }
 
-        public Producto(string nombre, int cantidad, float precio) 
+        public Producto(string nombre, float precio, int cantidad) 
         {
             this.nombre = nombre;
             this.cantidad = cantidad;
