@@ -9,10 +9,8 @@ namespace Facturator {
 
         public const char SEPARADOR_NOMBRES = '-';
         public const char SEPARADOR_PRECIOS = '#';
-        public const char SEPARADOR_REGISTROS = ',';
+        public const char SEPARADOR_REGISTROS = ';';//Revisar cual es el separado de un archivo csv dependiendo del sistema operativo
         public const char SEPARADOR_CANTIDAD = 'C';
-
-        private Factura[] facturas;//Pendiente hacer refactoring, la clase LectorArchivo solo debe leer el archivo y retornarlo
 
         /*
             En este primer ejemplo, vamos a leer todas las lineas de un archivo, para empezar a revisar el tema de lectura de datos externos,
@@ -22,48 +20,53 @@ namespace Facturator {
             tomado de: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-read-from-a-text-file
         */
 
-        public void LeerArchivoCompleto()
+        public Factura[] cargarFacturas()
         {
+            Factura[] facturas = null;
 
             try
             {
                 // Example #2
                 // Read each line of the file into a string array. Each element
                 // of the array is one line of the file.
-                string[] lines = System.IO.File.ReadAllLines(@"../../archivo/facturas.csv");
+                string[] lineas = System.IO.File.ReadAllLines(@"../../archivo/facturas.csv");
 
                 // Display the file contents by using a foreach loop.
                 Console.WriteLine("Contenido del archivo facturas = ");
-                foreach (string line in lines)
-                {
-                    // Use a tab to indent each line of the file.
-                    ProcesarLinea(line);
-                }
+                facturas = ProcesarLineas(lineas);
+                
             }
-            catch(Exception e)
+            catch(NullReferenceException e1)
+            {
+                Console.WriteLine("Error al procesar los items del archivo");
+            }
+            catch(Exception e2)
             {
                 //Pendiente personalizar la excepcion
                 Console.WriteLine("Error al leer el archivo, revise que el archivo este cerrado");
             }
+            return facturas;
         }
         
-        public void ProcesarLinea(string linea) {
+        public Factura[] ProcesarLineas(string[] lineas) {
 
-            string[] temp = Utilitario.SepararCadena(linea,SEPARADOR_REGISTROS);
+            string[] temp;
             string[] nombres, precios;
 
-            facturas = new Factura[temp.Length];
-
-            for (int i = 0; i < facturas.Length; i++)
+            Factura[] facturas = new Factura[lineas.Length];//Peniente hacer refactoring
+            
+            for (int i = 1; i < lineas.Length; i++)//Empezamos en 1 para saltarnos el encabezado de la tabla
             {
+                temp = Utilitario.SepararCadena(lineas[i], SEPARADOR_REGISTROS);                
                 //temp[0] Fecha
                 nombres = ProcesarRegistro(temp[1], SEPARADOR_NOMBRES);
                 precios = ProcesarRegistro(temp[2], SEPARADOR_PRECIOS);
+                facturas[i] = new Factura(nombres.Length);
                 facturas[i].AgregarProductos(nombres,precios);
                 //temp[3] Medio de pago
                 //temp[4] Estado actual
             }
-
+            return facturas;
         }
         
         public string[] ProcesarRegistro(string registro,char separador) {

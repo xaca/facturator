@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Factura.cs" />
     <Compile Include="LectorArchivo.cs" />
+    <Compile Include="Caja.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

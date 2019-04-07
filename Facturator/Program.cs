@@ -8,8 +8,10 @@ namespace Facturator {
     class Program {
         static void Main(string[] args) {
 
+            Caja caja = new Caja();
             LectorArchivo temp = new LectorArchivo();
-            temp.LeerArchivoCompleto();
+            caja.Facturas = temp.cargarFacturas();
+            caja.ImprimirFactura(2);
             Console.ReadKey();         
         }
     }

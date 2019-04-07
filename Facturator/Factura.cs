@@ -15,7 +15,7 @@ namespace Facturator {
         private int indice;
 
         public Factura() {
-
+            
         }
 
         public Factura(int cantidad_productos)
@@ -29,6 +29,12 @@ namespace Facturator {
             this.medio_pago = medio_pago;
             this.iva = iva;
             this.total = total;
+        }
+
+        public void MostrarProducto(int indice)
+        {
+            Console.WriteLine(canasta[indice].Nombre);
+            Console.WriteLine(canasta[indice].Precio);
         }
 
         public void AgregarProducto(Producto producto) {
@@ -51,11 +57,11 @@ namespace Facturator {
             string[] precio_cantidad;
 
             for (int i = 0; i < nombres.Length; i++)
-            {
+            {                
                 precio_cantidad = Utilitario.SepararCadena(precios[i], LectorArchivo.SEPARADOR_CANTIDAD);
                 precio = Utilitario.ConvertirFlotante(precio_cantidad[0]);
                 cantidad = Utilitario.ConvertirEntero(precio_cantidad[1]);
-                
+
                 if(precio > 0 && cantidad>0)
                 {
                     AgregarProducto(nombres[i], precio, cantidad);
