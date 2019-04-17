@@ -63,8 +63,10 @@ namespace Facturator {
                 precios = ProcesarRegistro(temp[2], SEPARADOR_PRECIOS);
                 facturas[i] = new Factura(nombres.Length);
                 facturas[i].AgregarProductos(nombres,precios);
+                facturas[i].Numero_factura = Utilitario.ConvertirEntero(temp[5]);
                 //temp[3] Medio de pago
                 //temp[4] Estado actual
+                //temp[5] Numero factura
             }
             return facturas;
         }

@@ -34,5 +34,21 @@ namespace Facturator {
 
             return temp;
         }
+
+        public static string ImprimirEspacios()
+        {
+            return " ";
+        }
+
+        public static void ImprimirSeparador(char caracter,int total)
+        {
+            string separador = "" + caracter;
+            string ans = "";
+            for (int i = 0; i < total; i++)
+            {
+                ans += separador;
+            }
+            Console.WriteLine(ans);
+        }
     }
 }

@@ -13,6 +13,8 @@ namespace Facturator {
         private float total;
         private Producto[] canasta;
         private int indice;
+        private string nombre_negocio;
+        private int numero_factura;
 
         public Factura() {
             
@@ -33,8 +35,31 @@ namespace Facturator {
 
         public void MostrarProducto(int indice)
         {
-            Console.WriteLine(canasta[indice].Nombre);
-            Console.WriteLine(canasta[indice].Precio);
+            int cantidad = canasta[indice].Cantidad;
+            Console.Write(canasta[indice].Nombre);
+            Console.Write(cantidad);
+            Console.WriteLine(canasta[indice].Precio*cantidad);
+
+        }
+
+        public void ImprimirCabezote()
+        {
+            Utilitario.ImprimirSeparador('*',30);
+            Console.WriteLine(nombre_negocio);
+            Console.WriteLine("#"+numero_factura);
+            Utilitario.ImprimirSeparador('*', 30);
+        }
+
+        public void ImprimirTirilla()
+        {
+            ImprimirCabezote();
+
+            //Pendiente calcular espacios y formato segun el nombre del producto
+
+            for (int i = 0; i < indice; i++)
+            {
+                MostrarProducto(i);
+            }
         }
 
         public void AgregarProducto(Producto producto) {
@@ -78,8 +103,7 @@ namespace Facturator {
         public string Medio_pago { get => medio_pago; set => medio_pago = value; }
         public float Iva { get => iva; set => iva = value; }
         public float Total { get => total; set => total = value; }
-        
-
+        public int Numero_factura { get => numero_factura; set => numero_factura = value; }
     }
 
 }

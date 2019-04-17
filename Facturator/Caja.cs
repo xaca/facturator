@@ -18,7 +18,7 @@ namespace Facturator {
         public void ImprimirFactura(int id_factura)
         {
             Factura f = facturas[id_factura];
-            f.MostrarProducto(0);
+            f.ImprimirTirilla();
         }
     }
 }
