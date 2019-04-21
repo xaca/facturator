@@ -8,7 +8,10 @@ namespace Facturator {
     class Constantes {
 
         public const string NOMBRE_NEGOCIO = "Funny Bussiness";
-        public const int ANCHO_TIRILLA = 30;
+        public const int ANCHO_TIRILLA = 32;
+        public const int CANTIDAD_CARACTERES_NOMBRE_PRODUCTO = 12;
+        public const int CANTIDAD_CARACTERES_PRECIO_UNITARIO = 5;
+        public const int CANTIDAD_CARACTERES_PRECIO_SUBTOTAL = 10;
 
     }
 }

@@ -35,9 +35,49 @@ namespace Facturator {
             return temp;
         }
 
-        public static string ImprimirEspacios()
+        public static void ImprimirEspacios(int total)
         {
-            return " ";
+            string ans = "";
+            for (int i = 0; i < total; i++)
+            {
+                ans += " ";
+            }
+            Console.Write(ans);
+        }
+
+        public static string ImprimirEspacios(string cadena,int total,bool posicion)
+        {
+            int cantidad = total - cadena.Length;
+            string ans = "";
+
+            if (cantidad > 0)
+            {
+                for (int i = 0; i < cantidad; i++)
+                {
+                    ans += " ";
+                }
+                ans = (posicion)?cadena + ans: ans + cadena;
+            }
+            else if (cantidad == 0)
+            {
+                ans = cadena;
+            }
+            else
+            {
+                ans = TruncarTexto(cadena, total);
+            }
+
+            return ans;
+        }
+
+        public static string ImprimirEspaciosInicio(string cadena,int total)
+        {
+            return ImprimirEspacios(cadena, total, false);
+        }
+
+        public static string ImprimirEspaciosFin(string cadena,int total)
+        {                        
+            return ImprimirEspacios(cadena,total,true);
         }
 
         public static void ImprimirSeparador(char caracter,int total)
@@ -49,6 +89,16 @@ namespace Facturator {
                 ans += separador;
             }
             Console.WriteLine(ans);
+        }
+
+        public static string FomatearDigito(string digitos)
+        {
+            return (ConvertirEntero(digitos)<10)?"0"+digitos:digitos;
+        }
+
+        public static string TruncarTexto(string cadena,int total_caracteres)
+        {
+            return cadena.Length > total_caracteres ? cadena.Substring(0,total_caracteres-1):cadena;
         }
     }
 }

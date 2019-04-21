@@ -36,18 +36,22 @@ namespace Facturator {
         public void MostrarProducto(int indice)
         {
             int cantidad = canasta[indice].Cantidad;
-            Console.Write(canasta[indice].Nombre);
-            Console.Write(cantidad);
-            Console.WriteLine(canasta[indice].Precio*cantidad);
+            Console.Write(Utilitario.FomatearDigito(cantidad.ToString()));//Se hace de esta forma, para que la función de convertir digitos sea versátil
+            Utilitario.ImprimirEspacios(1);
+            Console.Write(Utilitario.ImprimirEspaciosFin(canasta[indice].Nombre,Constantes.CANTIDAD_CARACTERES_NOMBRE_PRODUCTO));
+            Utilitario.ImprimirEspacios(1);
+            Console.Write(Utilitario.ImprimirEspaciosInicio(canasta[indice].Precio.ToString(), Constantes.CANTIDAD_CARACTERES_PRECIO_UNITARIO));
+            Utilitario.ImprimirEspacios(1);
+            Console.WriteLine(Utilitario.ImprimirEspaciosInicio((canasta[indice].Precio*cantidad).ToString(),Constantes.CANTIDAD_CARACTERES_PRECIO_SUBTOTAL));
 
         }
 
         public void ImprimirCabezote()
         {
-            Utilitario.ImprimirSeparador('*',30);
+            Utilitario.ImprimirSeparador('*',Constantes.ANCHO_TIRILLA);
             Console.WriteLine(nombre_negocio);
             Console.WriteLine("#"+numero_factura);
-            Utilitario.ImprimirSeparador('*', 30);
+            Utilitario.ImprimirSeparador('*', Constantes.ANCHO_TIRILLA);
         }
 
         public void ImprimirTirilla()
