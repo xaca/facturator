@@ -58,8 +58,7 @@ namespace Facturator {
         {
             ImprimirCabezote();
 
-            //Pendiente calcular espacios y formato segun el nombre del producto
-
+            //Pendiente calcular espacios y formato segun el nombre del producto            
             for (int i = 0; i < indice; i++)
             {
                 MostrarProducto(i);
@@ -68,7 +67,7 @@ namespace Facturator {
 
         public void AgregarProducto(Producto producto) {
             
-            if(indice+1 < canasta.Length)
+            if (indice+1 <= canasta.Length)
             {
                 canasta[indice++] = producto; 
             }
@@ -97,7 +96,7 @@ namespace Facturator {
                 }
                 else
                 {
-                    Console.WriteLine("Error al leer el dato:" + nombres[i]);
+                    Console.WriteLine("Error al leer el dato:" + nombres[i]);//Cambiar por una exepcion
                 }
             }
         }

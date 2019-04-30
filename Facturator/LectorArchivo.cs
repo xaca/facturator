@@ -54,14 +54,15 @@ namespace Facturator {
             string[] nombres, precios;
 
             Factura[] facturas = new Factura[lineas.Length];//Peniente hacer refactoring
-            
+
             for (int i = 1; i < lineas.Length; i++)//Empezamos en 1 para saltarnos el encabezado de la tabla
             {
-                temp = Utilitario.SepararCadena(lineas[i], SEPARADOR_REGISTROS);                
+                temp = Utilitario.SepararCadena(lineas[i], SEPARADOR_REGISTROS);
                 //temp[0] Fecha
                 nombres = ProcesarRegistro(temp[1], SEPARADOR_NOMBRES);
                 precios = ProcesarRegistro(temp[2], SEPARADOR_PRECIOS);
-                facturas[i] = new Factura(nombres.Length);
+                Debug.Log(i + " " + nombres.Length);
+                facturas[i] = new Factura(nombres.Length);                
                 facturas[i].AgregarProductos(nombres,precios);
                 facturas[i].Numero_factura = Utilitario.ConvertirEntero(temp[5]);
                 //temp[3] Medio de pago
