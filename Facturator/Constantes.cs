@@ -12,6 +12,7 @@ namespace Facturator {
         public const int CANTIDAD_CARACTERES_NOMBRE_PRODUCTO = 12;
         public const int CANTIDAD_CARACTERES_PRECIO_UNITARIO = 5;
         public const int CANTIDAD_CARACTERES_PRECIO_SUBTOTAL = 10;
+        public const float IMPUESTO = .19F;
 
     }
 }

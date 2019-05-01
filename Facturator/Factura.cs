@@ -53,11 +53,21 @@ namespace Facturator {
             Utilitario.ImprimirSeparador('*', Constantes.ANCHO_TIRILLA);
         }
 
+        public float CalcularImpuesto(float subtotal)
+        {             
+            return subtotal * Constantes.IMPUESTO;
+        }
+
         public void ImprimirPata()
         {
             float subtotal = CalcularSubtotal();
-            Utilitario.ImprimirEspacios(Constantes.ANCHO_TIRILLA - (subtotal.ToString().Length));
-            Console.Write(subtotal);            
+            string texto_subtotal = "Subtotal $" + subtotal;
+            string texto_impuesto = "Impuesto $" + CalcularImpuesto(subtotal);
+            Utilitario.ImprimirSeparador('*', Constantes.ANCHO_TIRILLA);
+            Utilitario.ImprimirEspacios(Constantes.ANCHO_TIRILLA - (texto_subtotal.Length));
+            Console.WriteLine(texto_subtotal);
+            Utilitario.ImprimirEspacios(Constantes.ANCHO_TIRILLA - (texto_impuesto.Length));
+            Console.Write(texto_impuesto);
         }
 
         public void ImprimirTirilla()
