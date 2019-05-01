@@ -12,8 +12,7 @@ namespace Facturator {
         private float iva;
         private float total;
         private Producto[] canasta;
-        private int indice;
-        private string nombre_negocio;
+        private int indice;        
         private int numero_factura;
 
         public Factura() {
@@ -49,20 +48,28 @@ namespace Facturator {
         public void ImprimirCabezote()
         {
             Utilitario.ImprimirSeparador('*',Constantes.ANCHO_TIRILLA);
-            Console.WriteLine(nombre_negocio);
-            Console.WriteLine("#"+numero_factura);
+            Utilitario.CentrarPalabra(Constantes.NOMBRE_NEGOCIO, Constantes.ANCHO_TIRILLA);
+            Utilitario.CentrarPalabra("#"+numero_factura,Constantes.ANCHO_TIRILLA);
             Utilitario.ImprimirSeparador('*', Constantes.ANCHO_TIRILLA);
+        }
+
+        public void ImprimirPata()
+        {
+            float subtotal = CalcularSubtotal();
+            Utilitario.ImprimirEspacios(Constantes.ANCHO_TIRILLA - (subtotal.ToString().Length));
+            Console.Write(subtotal);            
         }
 
         public void ImprimirTirilla()
         {
             ImprimirCabezote();
-
-            //Pendiente calcular espacios y formato segun el nombre del producto            
+           
             for (int i = 0; i < indice; i++)
             {
                 MostrarProducto(i);
             }
+            //Pendiente calcular la propina, el impuesto, el método de pago y si aplica devuelta.
+            ImprimirPata();
         }
 
         public void AgregarProducto(Producto producto) {
@@ -99,6 +106,18 @@ namespace Facturator {
                     Console.WriteLine("Error al leer el dato:" + nombres[i]);//Cambiar por una exepcion
                 }
             }
+        }
+
+        public float CalcularSubtotal()
+        {
+            float subtotal = 0;
+
+            for (int i = 0; i < canasta.Length; i++)
+            {
+                subtotal += canasta[i].Precio*canasta[i].Cantidad;
+            }
+
+            return subtotal;
         }
 
         public string Fecha { get => fecha; set => fecha = value; }

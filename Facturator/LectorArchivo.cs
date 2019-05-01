@@ -32,7 +32,7 @@ namespace Facturator {
                 string[] lineas = System.IO.File.ReadAllLines(@"../../archivo/facturas.csv");
 
                 // Display the file contents by using a foreach loop.
-                Console.WriteLine("Contenido del archivo facturas = ");
+                Debug.Log("Contenido del archivo facturas = ");
                 facturas = ProcesarLineas(lineas);
                 
             }

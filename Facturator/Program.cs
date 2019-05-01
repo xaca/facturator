@@ -12,7 +12,7 @@ namespace Facturator {
             
             LectorArchivo temp = new LectorArchivo();
             caja.Facturas = temp.cargarFacturas();
-            caja.ImprimirFactura(4);
+            caja.ImprimirFactura(7);
             Console.ReadKey();         
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facturator {
     class Utilitario {
-       
+        public static string CARACTER_ESPACIO = " ";       
         public static float ConvertirFlotante(string temp)
         {
             float salida = -1f;//Un valor negativo no es posible para un precio, por tanto sirve para validar
@@ -40,7 +40,7 @@ namespace Facturator {
             string ans = "";
             for (int i = 0; i < total; i++)
             {
-                ans += " ";
+                ans += CARACTER_ESPACIO;
             }
             Console.Write(ans);
         }
@@ -68,6 +68,33 @@ namespace Facturator {
             }
 
             return ans;
+        }
+
+        internal static void CentrarPalabra(string palabra, int ancho)
+        {
+            int medio = 0;
+            int ajuste = 0;
+            if(palabra.Length <= ancho)
+            {
+                if (palabra.Length < ancho)
+                {
+                    medio = (ancho - palabra.Length) / 2;
+
+                    if ((2 * medio + palabra.Length) < ancho)
+                    {
+                        ajuste = 1;
+                    }
+                }
+                //Pendiente ajustar para que tenga en cuenta el ancho completo, probar otros nombres
+                Utilitario.ImprimirEspacios(medio);
+                Console.Write(palabra);
+                Utilitario.ImprimirEspacios(medio+ ajuste);
+            }
+            else
+            {
+                TruncarTexto(palabra, ancho);
+            }
+            Console.WriteLine();
         }
 
         public static string ImprimirEspaciosInicio(string cadena,int total)
