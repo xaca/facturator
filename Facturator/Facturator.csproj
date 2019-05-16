@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="LectorArchivo.cs" />
     <Compile Include="Caja.cs" />
