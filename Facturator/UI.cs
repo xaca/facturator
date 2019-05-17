@@ -10,7 +10,13 @@ namespace Facturator {
         public static int Menu()
         {
             int opc = 0;
-            Console.WriteLine("Facturator v1.0"); //TODO: Personalizar el menu ascii
+            //TODO: Personalizar el menu ascii
+            Console.WriteLine("  __            _                   _             ");
+            Console.WriteLine(" / _| __ _  ___| |_ _   _ _ __ __ _| |_ ___  _ __ ");
+            Console.WriteLine("| |_ / _` |/ __| __| | | | '__/ _` | __/ _ \\| '__|");
+            Console.WriteLine("|  _| (_| | (__| |_| |_| | | | (_| | || (_) | |   ");
+            Console.WriteLine("|_|  \\__,_|\\___|\\__|\\__,_|_|  \\__,_|\\__\\___/|_| ");
+            Console.WriteLine();
             do
             {
                 Console.WriteLine("Ingrese una opción así");
