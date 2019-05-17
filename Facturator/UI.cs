@@ -10,7 +10,7 @@ namespace Facturator {
         public static int Menu()
         {
             int opc = 0;
-            Console.WriteLine("Facturator"); //TODO: Personalizar el menu ascii
+            Console.WriteLine("Facturator v1.0"); //TODO: Personalizar el menu ascii
             do
             {
                 Console.WriteLine("Ingrese una opción así");
