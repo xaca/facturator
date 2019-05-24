@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 namespace Facturator {
     class UI {
 
-        public static Program programa_principal;
+        public static Caja caja;
 
-        public static int BuscarFactura()
+        public static void BuscarFactura()
         {
-            int id;
+            int id_factura;
             do
             {
                 Console.WriteLine("Ingrese el id de la factura solicitada");
-            } while (int.TryParse(Console.ReadLine(), out id));
+            } while (!int.TryParse(Console.ReadLine(), out id_factura));
 
-            return id;
+            caja.ImprimirFactura(id_factura);
 
         }
 
-        public static int Menu(Program programa_principal)
+        public static int Menu(Caja caja)
         {
             int opc = 0;
-            UI.programa_principal = programa_principal;
+            UI.caja = caja;
             //TODO: Personalizar el menu ascii
             Console.WriteLine("  __            _                   _             ");
             Console.WriteLine(" / _| __ _  ___| |_ _   _ _ __ __ _| |_ ___  _ __ ");
@@ -49,11 +49,9 @@ namespace Facturator {
                     {
                         if(opc == 4)
                         {
-                            BuscarFactura();
-                            
+                            BuscarFactura();                            
                         }
-
-                        break;
+                       
                     }
                 }
                 else

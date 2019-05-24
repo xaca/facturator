@@ -17,8 +17,18 @@ namespace Facturator {
 
         public void ImprimirFactura(int id_factura)
         {
-            Factura f = facturas[id_factura];
-            f.ImprimirTirilla();
+            Factura f;
+            
+            if(id_factura >=0 && id_factura<facturas.Length)
+            {
+                f = facturas[id_factura];
+                f.ImprimirTirilla();
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine(Constantes.ERROR_AL_BUSCAR_FACTURA);
+            }
         }
     }
 }
