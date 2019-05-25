@@ -23,7 +23,7 @@ namespace Facturator {
             {
                 f = facturas[id_factura];
                 f.ImprimirTirilla();
-                Console.WriteLine();
+                Console.WriteLine();                
             }
             else
             {
