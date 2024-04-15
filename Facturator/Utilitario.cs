@@ -45,6 +45,17 @@ namespace Facturator {
             Console.Write(ans);
         }
 
+        public static string MinificarNombre(string nombre)
+        {
+            String[] temp = SepararCadena(nombre, ' ');
+            StringBuilder salida = new StringBuilder();
+            foreach (var item in temp)
+            {
+                salida.Append(item);
+            }
+            return salida.ToString();
+        }
+
         public static string ImprimirEspacios(string cadena,int total,bool posicion)
         {
             int cantidad = total - cadena.Length;

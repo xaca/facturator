@@ -9,10 +9,11 @@ namespace Facturator {
         static void Main(string[] args) {
 
             Caja caja = new Caja();
-            LectorArchivo temp = new LectorArchivo();
+            IODatos temp = new IODatos();
             caja.Facturas = temp.cargarFacturas();
-            //caja.ImprimirFactura(7);¨
-            UI.Menu(caja);
+            caja.ImprimirFactura(7);
+            temp.GuardarFacturas(temp.FormatearLineasFacturas(caja.Facturas));
+            //UI.Menu(caja);
             Console.ReadKey();         
         }
     }

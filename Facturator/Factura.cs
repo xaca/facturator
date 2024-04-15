@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,42 @@ namespace Facturator {
             return subtotal * Constantes.IMPUESTO;
         }
 
+        public string formatearProductos()
+        {
+            StringBuilder temp = new StringBuilder();
+            Producto p;
+            //PanDeLaMigueria - MiloDeLaMigueria
+            for(int i = 0;i<canasta.Length;i++)
+            {
+                p = canasta[i];
+                temp.Append(Utilitario.MinificarNombre(p.Nombre));
+                if(i+1<canasta.Length)
+                {
+                    temp.Append(IODatos.SEPARADOR_NOMBRES);
+                }
+            }
+            return temp.ToString();
+        }
+
+        public string formatearPrecios()
+        {
+            StringBuilder temp = new StringBuilder();
+            Producto p;
+            //8000C1#2000C2
+            for (int i = 0; i < canasta.Length; i++)
+            {
+                p = canasta[i];
+                temp.Append(p.Precio);
+                temp.Append(IODatos.SEPARADOR_CANTIDAD);
+                temp.Append(p.Cantidad);
+                if(i+1<canasta.Length)
+                {
+                    temp.Append(IODatos.SEPARADOR_PRECIOS);
+                }
+            }
+            return temp.ToString();
+        }
+
         public void ImprimirPata()
         {
             float subtotal = CalcularSubtotal();
@@ -103,7 +140,7 @@ namespace Facturator {
 
             for (int i = 0; i < nombres.Length; i++)
             {                
-                precio_cantidad = Utilitario.SepararCadena(precios[i], LectorArchivo.SEPARADOR_CANTIDAD);
+                precio_cantidad = Utilitario.SepararCadena(precios[i], IODatos.SEPARADOR_CANTIDAD);
                 precio = Utilitario.ConvertirFlotante(precio_cantidad[0]);
                 cantidad = Utilitario.ConvertirEntero(precio_cantidad[1]);
 
